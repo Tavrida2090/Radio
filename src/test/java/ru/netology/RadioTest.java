@@ -15,6 +15,16 @@ public class RadioTest {
         Assertions.assertEquals(1, radio.getCurrentStation());
     }
 
+    @Test
+    public void setUnderMinNumberRadio() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(-1);
+
+        radio.next();
+
+        Assertions.assertEquals(1, radio.getCurrentStation());
+    }
+
 
     @Test
     public void setOverMinNumberRadio() {
@@ -44,6 +54,16 @@ public class RadioTest {
         radio.next();
 
         Assertions.assertEquals(9, radio.getCurrentStation());
+    }
+
+    @Test
+    public void setOverMaxNumberRadio() {
+        Radio radio = new Radio();
+        radio.setCurrentStation(10);
+
+        radio.next();
+
+        Assertions.assertEquals(1, radio.getCurrentStation());
     }
 
 
@@ -107,6 +127,16 @@ public class RadioTest {
         Assertions.assertEquals(2, radio.getCurrentVolume());
     }
 
+    @Test
+    public void shouldIncreaseUnderMinVolume() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(-1);
+
+        radio.increaseVolume();
+
+        Assertions.assertEquals(1, radio.getCurrentVolume());
+    }
+
 
     @Test
     public void shouldIncreaseMaxVolume() {
@@ -116,6 +146,16 @@ public class RadioTest {
         radio.increaseVolume();
 
         Assertions.assertEquals(100, radio.getCurrentVolume());
+    }
+
+    @Test
+    public void shouldIncreaseOverMaxVolume() {
+        Radio radio = new Radio();
+        radio.setCurrentVolume(101);
+
+        radio.increaseVolume();
+
+        Assertions.assertEquals(1, radio.getCurrentVolume());
     }
 
 
