@@ -3,9 +3,20 @@ package ru.netology;
 public class Radio {
     private int currentStation; // текущая станция
     private int currentVolume; // текущая громкость
+    private int maxStation;
+
+    public Radio() {
+        this.maxStation = 9;
+
+    }
+
+    public Radio(int stationsCount) {
+        this.maxStation = stationsCount - 1;
+
+    }
 
     public void next() {                //переключаем на следующую станцию
-        if (currentStation != 9) {
+        if (currentStation != maxStation) {
             currentStation++;
             return;
         }
@@ -16,7 +27,7 @@ public class Radio {
         if (currentStation != 0) {
             currentStation--;
         } else {
-            currentStation = 9;
+            currentStation = maxStation;
         }
     }
 
@@ -28,7 +39,7 @@ public class Radio {
         if (currentStation < 0) {           //текущая станция не может быть меньше нуля
             return;
         }
-        if (currentStation > 9) {           //текущая станция не может быть больше 9
+        if (currentStation > maxStation) {           //текущая станция не может быть больше выбранной за максимальную
             return;
         }
         this.currentStation = currentStation;
